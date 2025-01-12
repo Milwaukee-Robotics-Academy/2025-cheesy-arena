@@ -52,8 +52,8 @@ func (web *Web) settingsPostHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else {
+		numAlliances, _ = strconv.Atoi(r.PostFormValue("numPlayoffAlliances"))
 		playoffType = model.DoubleEliminationPlayoff
-		numAlliances = 8
 	}
 	if eventSettings.PlayoffType != playoffType || eventSettings.NumPlayoffAlliances != numAlliances {
 		alliances, err := web.arena.Database.GetAllAlliances()
